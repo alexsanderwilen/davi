@@ -195,18 +195,18 @@ const AlphabetGame = () => {
     const imageName = selectedImage[1];
     const userAnswer = letters.join("").toUpperCase();
   
-    if (userAnswer === imageName) {
-      setSpeechText("Parabéns! Você acertou! Escreveu corretamente.");
+    if (userAnswer === imageName) {      
       setScore((prevScore) => ({
         correct: prevScore.correct + 1,
         total: prevScore.total + 1
       }));
-    } else {
-      setSpeechText("Você errou. Tente novamente.");
+      speakText("Parabéns! Você acertou! Escreveu corretamente.");
+    } else {      
       setScore((prevScore) => ({
         ...prevScore,
         total: prevScore.total + 1
       }));
+      speakText("Você errou. Tente novamente.");
     }
   
     inputRefs.current[0]?.focus();
