@@ -41,10 +41,12 @@ import Combinacao from "./components/Combinacao";
 import Ditado from "./components/Ditado";
 import Divisao from "./components/Divisao";
 import Multiplicacao from "./components/Multiplicacao";
+import AlphabetGame from "./components/AlphabetGame";
 
 enum Categoria {
   MATEMATICA = "Matemática",
   PORTUGUES = "Português",
+  NOMEANIMAL = "Nome Imagem",
   HISTORIA = "História",
   GEOGRAFIA = "Geografia",
 }
@@ -58,6 +60,7 @@ function App() {
       <select value={categoriaSelecionada} onChange={(event) => setCategoriaSelecionada(event.target.value as Categoria)}>
         <option value={Categoria.MATEMATICA}>Matemática</option>
         <option value={Categoria.PORTUGUES}>Português</option>
+        <option value={Categoria.NOMEANIMAL}>Nome Imagem</option>
         <option value={Categoria.HISTORIA}>História</option>
         <option value={Categoria.GEOGRAFIA}>Geografia</option>
       </select>
@@ -69,6 +72,7 @@ function App() {
         </>
       )}
       {categoriaSelecionada === Categoria.PORTUGUES && <Ditado />}
+      {categoriaSelecionada === Categoria.NOMEANIMAL && <AlphabetGame />}      
       {categoriaSelecionada === Categoria.HISTORIA && <h2>Exercícios de História</h2>}
       {categoriaSelecionada === Categoria.GEOGRAFIA && <h2>Exercícios de Geografia</h2>}
     </div>
@@ -76,3 +80,4 @@ function App() {
 }
 
 export default App;
+

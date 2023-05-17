@@ -3,110 +3,31 @@ import "./Ditado.css"; // Importar o arquivo CSS
 
 const ALFABETO = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const PALAVRAS = [
-  "GATO",
-  "CACHORRO",
-  "BANANA",
-  "COMPUTADOR",
-  "SOL",
-  "PRAIA",
-  "FUTEBOL",
-  "LIVRO",
-  "CHOCOLATE",
-  "ABACAXI",
-  "ELEFANTE",
-  "JANELA",
-  "TELEFONE",
-  "AMARELO",
-  "BRINCADEIRA",
-  "ESCOLA",
-  "SAPATO",
-  "CAMA",
-  "LUA",
-  "ESTRELA",
-  "LEITE",
-  "CARRO",
-  "VIAGEM",
-  "BOLA",
-  "PISCINA",
-  "FRUTA",
-  "FELICIDADE",
-  "CASA",
-  "RISADA",
-  "CARRINHO",
-  "MENINA",
-  "MENINO",
-  "PARQUE",
-  "CHAVE",
-  "FESTA",
-  "PRESENTE",
-  "DINOSSAURO",
-  "DINHEIRO",
-  "BRINQUEDO",
-  "GUITARRA",
-  "BORBOLETA",
-  "AMIGO",
-  "AMIGA",
-  "LIVRARIA",
-  "CINEMA",
-  "SORVETE",
-  "PIPOCA",
-  "HAMBURGUER",
-  "PIZZA",
-  "PASSARINHO",
-  "FLOR",
-  "PINTURA",
-  "CAMISA",
-  "SAPATO",
-  "FUTEBOL",
-  "BASQUETE",
-  "CACHECOL",
-  "GORRO",
-  "NEVE",
-  "PASSEIO",
-  "CORRIDA",
-  "FRIO",
-  "CALOR",
-  "INVERNO",
-  "OUTONO",
-  "PRIMAVERA",
-  "AMOR",
-  "CARINHO",
-  "GENTILEZA",
-  "PAZ",
-  "HARMONIA",
-  "CHOCOLATE",
-  "BISCOITO",
-  "QUEIJO",
-  "SOPA",
-  "BOLO",
-  "SORRISO",
-  "AMIZADE",
-  "ESPERANÇA",
-  "RISO",
-  "SATISFAÇÃO",
-  "ALEGRIA",
-  "SUCESSO"  
+  ["GATO", "GA TO"],
+  ["CACHORRO", "CA CHO RRO"],
+  ["BANANA", "BA NA NA"],
+  ["COMPUTADOR", "COM PU TA DOR"],
+  ["SOL", "SOL"]
+  // ... outras palavras
 ];
 
 export default function Ditado() {
-  const [palavra, setPalavra] = useState("");
+  const [indicePalavra, setIndicePalavra] = useState(0);
   const [letras, setLetras] = useState<string[]>([]);
-  const [palavraAtual, setPalavraAtual] = useState("");
-  const [palavraAtualSemMascara, setPalavraAtualSemMascara] =
-    useState(palavraAtual);
+  const [palavraAtual, setPalavraAtual] = useState<string[]>([]);
   const [palavrasCriadas, setPalavrasCriadas] = useState(0);
   const [palavrasAcertadas, setPalavrasAcertadas] = useState(0);
   const [soletrar, setSoletrar] = useState(false);
 
   useEffect(() => {
-    if (palavraAtual) {
+    if (palavraAtual.length > 0) {
       // Reproduzir a palavra atual em áudio
-      TextToSpeech(palavraAtual);
+      TextToSpeech(palavraAtual[0]);
     }
   }, [palavraAtual]);
 
   function handlePalavraChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setPalavra(event.target.value);
+    setLetras(event.target.value.split(""));
   }
 
   function handleLetraClick(letra: string) {
@@ -114,34 +35,36 @@ export default function Ditado() {
   }
 
   function handleLimpar() {
-    setPalavra("");
     setLetras([]);
   }
 
   function handleNovaPalavra() {
     const indice = Math.floor(Math.random() * PALAVRAS.length);
     const novaPalavra = PALAVRAS[indice];
+    setIndicePalavra(indice);
     setPalavraAtual(novaPalavra);
-    setPalavraAtualSemMascara(novaPalavra);
-    setPalavra(maskPalavra(novaPalavra));
     setLetras([]);
     setPalavrasCriadas(palavrasCriadas + 1);
   }
 
   function handleVerificar() {
     const palavraFormada = letras.join("");
-    if (palavraFormada === palavraAtual) {
+    if (palavraFormada === palavraAtual[0]) {
       TextToSpeech("Parabéns! Você acertou a palavra.");
       setPalavrasAcertadas(palavrasAcertadas + 1);
     } else {
       TextToSpeech("Você errou. Tente novamente.");
     }
-    setPalavra(palavraAtual);
+    setLetras(palavraAtual[0].split(""));
   }
 
-  function maskPalavra(palavra: string) {
-    return "*".repeat(palavra.length);
+  function maskPalavra(palavra: string[]) {
+    if (palavra[0]) {
+      return "*".repeat(palavra[0].length);
+    }
+    return "";
   }
+  
 
   return (
     <div className="ditado-container">
@@ -150,10 +73,9 @@ export default function Ditado() {
         <p>Palavra:</p>
         <input
           type="text"
-          value={palavra}
+          value={letras.join("")}
           onChange={handlePalavraChange}
           placeholder={maskPalavra(palavraAtual)}
-          readOnly={!palavra}
         />
       </div>
       <div>
@@ -167,7 +89,7 @@ export default function Ditado() {
       <button onClick={handleLimpar}>Limpar</button>
       <div>
         <p>Alfabeto:</p>
-        {ALFABETO.map((letra) => (
+        {ALFABETO.map((letra: string) => (
           <button key={letra} onClick={() => handleLetraClick(letra)}>
             {letra}
           </button>
@@ -177,7 +99,7 @@ export default function Ditado() {
       <button onClick={handleNovaPalavra}>Nova Palavra</button>
       <div>
         <p>Hint:</p>
-        <button onClick={() => TextToSpeech(palavraAtual)}>
+        <button onClick={() => TextToSpeech(palavraAtual[0])}>
           Repetir o Ditado
         </button>
       </div>
