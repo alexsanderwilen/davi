@@ -78,3 +78,24 @@ body {
     color: #f44336;
   }
   
+
+  .scores {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .scores p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .scores .score-label {
+    font-weight: bold;
+  }
+  
+  .scores .score-value {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
