@@ -50,7 +50,7 @@ enum Categoria {
 }
 
 function App() {
-  const [categoriaSelecionada, setCategoriaSelecionada] = useState<Categoria>(Categoria.MATEMATICA);
+  const [categoriaSelecionada, setCategoriaSelecionada] = useState<Categoria>(Categoria.PORTUGUES);
 
   return (
     <div>
