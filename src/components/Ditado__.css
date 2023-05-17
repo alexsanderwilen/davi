@@ -5,6 +5,7 @@
     background-color: #f5f5f5;
     border: 1px solid #ccc;
     border-radius: 5px;
+    position: relative;    
   }
   
   .ditado-container h2 {
@@ -18,7 +19,7 @@
   }
   
   .ditado-container input[type="text"] {
-    width: 100%;
+    width: 98%;
     padding: 10px;
     font-size: 16px;
   }
@@ -31,7 +32,6 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
   }
   
   .ditado-container button:hover {
@@ -49,9 +49,9 @@
   }
   
   .ditado-container .scores {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+    position: absolute;
+    top: 20px;
+    right: 20px;
   }
   
   .ditado-container .scores p {
@@ -67,4 +67,5 @@
     color: #007bff;
     font-weight: bold;
   }
+
   
