@@ -74,11 +74,15 @@ const Forca: React.FC = () => {
     setInputValue("");
   };
 
-  const getHiddenWord = (): string => {
-    return word
-      .split("")
-      .map((char) => (guesses.includes(char) ? char : "_"))
-      .join(" ");
+  const getHiddenWord = (): React.ReactNode => {
+    return word.split("").map((char, index) => (
+      <span
+        key={index}
+        className={guesses.includes(char) ? "correct-letter" : "wrong-letter"}
+      >
+        {guesses.includes(char) ? char : "_"}
+      </span>
+    ));
   };
 
   const isGameOver = (): boolean => {
@@ -171,7 +175,17 @@ const Forca: React.FC = () => {
         Jogar Novamente
       </button>
       <div className="guesses-container">
-        <p>Letras Informadas: {guesses.join(" ")}</p>
+        <p>
+          Letras Informadas:{" "}
+          {guesses.map((guess, index) => (
+            <span
+              key={index}
+              className={word.includes(guess) ? "correct-letter" : "wrong-letter"}
+            >
+              {guess}
+            </span>
+          ))}
+        </p>
       </div>
     </div>
   );
