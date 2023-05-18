@@ -87,3 +87,13 @@
   color: #007bff;
   font-weight: bold;
 }
+
+.reset-button{
+  margin-top: 15px;
+  padding: 8px 16px;
+  font-size: 18px;
+  border: none;
+  background-color:  green;
+  color: #fff;
+  cursor: pointer;   
+}
