@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Forca2.css";
+import "./Forca.css";
 
 const Forca: React.FC = () => {
   const [words] = useState<string[]>([
