@@ -1,0 +1,73 @@
+.forca-container {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.hangman-container {
+  margin-bottom: 20px;
+}
+
+.hangman {
+  font-size: 24px;
+  white-space: pre;
+}
+
+.game-over-message,
+.winner-message {
+  margin-bottom: 20px;
+}
+
+.word-container {
+  margin-bottom: 20px;
+}
+
+.hidden-word {
+  display: inline-block;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.correct-letter {
+  color: green;
+}
+
+.wrong-letter {
+  color: red;
+}
+
+.statistics {
+  margin-bottom: 20px;
+}
+
+.guess-form {
+  margin-bottom: 10px;
+}
+
+.reset-button {
+  margin-bottom: 20px;
+}
+
+.guesses-container {
+  margin-bottom: 20px;
+}
+
+.guess-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .forca-container {
+    padding: 10px;
+  }
+
+  .hidden-word {
+    font-size: 18px;
+  }
+}

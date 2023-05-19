@@ -1,70 +1,69 @@
 .ditado-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .ditado-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .ditado-container p {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .ditado-container input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  .ditado-container button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .ditado-container button:hover {
-    background-color: #0056b3;
-  }
-  
-  .ditado-container .hint-button {
-    margin-top: 10px;
-  }
-  
-  .ditado-container .result {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .ditado-container .scores {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .ditado-container .scores p {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .ditado-container .scores .score-label {
-    font-weight: bold;
-  }
-  
-  .ditado-container .scores .score-value {
-    color: #007bff;
-    font-weight: bold;
-  }
-  
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.ditado-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.ditado-container p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.ditado-container input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.ditado-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.ditado-container button:hover {
+  background-color: #0056b3;
+}
+
+.ditado-container .hint-button {
+  margin-top: 10px;
+}
+
+.ditado-container .result {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ditado-container .scores {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ditado-container .scores p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.ditado-container .scores .score-label {
+  font-weight: bold;
+}
+
+.ditado-container .scores .score-value {
+  color: #007bff;
+  font-weight: bold;
+}

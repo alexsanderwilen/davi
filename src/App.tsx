@@ -43,6 +43,7 @@ import Divisao from "./components/Divisao";
 import Multiplicacao from "./components/Multiplicacao";
 import AlphabetGame from "./components/AlphabetGame";
 import Forca from "./components/Forca";
+import Forca2 from "./components/Forca2";
 
 enum Categoria {
   MATEMATICA = "Matemática",
@@ -51,6 +52,7 @@ enum Categoria {
   HISTORIA = "História",
   GEOGRAFIA = "Geografia",
   JFORCA = "Forca",
+  JFORCA2 = "Forca 2",
 }
 
 function App() {
@@ -64,6 +66,7 @@ function App() {
         <option value={Categoria.PORTUGUES}>Português</option>
         <option value={Categoria.NOMEANIMAL}>Nome Imagem</option>
         <option value={Categoria.JFORCA}>Jogo da Forca</option>
+        <option value={Categoria.JFORCA2}>Jogo da Forca 2</option>
         <option value={Categoria.HISTORIA}>História</option>
         <option value={Categoria.GEOGRAFIA}>Geografia</option>
       </select>
@@ -77,6 +80,7 @@ function App() {
       {categoriaSelecionada === Categoria.PORTUGUES && <Ditado />}
       {categoriaSelecionada === Categoria.NOMEANIMAL && <AlphabetGame />}      
       {categoriaSelecionada === Categoria.JFORCA && <Forca />}      
+      {categoriaSelecionada === Categoria.JFORCA2 && <Forca2/>}      
       {categoriaSelecionada === Categoria.HISTORIA && <h2>Exercícios de História</h2>}
       {categoriaSelecionada === Categoria.GEOGRAFIA && <h2>Exercícios de Geografia</h2>}
     </div>
