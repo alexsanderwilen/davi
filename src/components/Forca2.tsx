@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+/*import React, { useState, useEffect } from "react";
 import "./Forca2.css";
 
 const Forca: React.FC = () => {
@@ -199,10 +199,9 @@ const Forca: React.FC = () => {
   );
 };
 
-export default Forca;
+export default Forca;*/
 
-
-/*import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Forca2.css";
 
 const Forca: React.FC = () => {
@@ -232,6 +231,7 @@ const Forca: React.FC = () => {
     "GATO",
     "RINOCERONTE",
   ]);
+  const [usedWords, setUsedWords] = useState<string[]>([]);
   const [word, setWord] = useState<string>("");
   const [guesses, setGuesses] = useState<string[]>([]);
   const [mistakes, setMistakes] = useState<number>(0);
@@ -244,11 +244,20 @@ const Forca: React.FC = () => {
   }, []);
 
   const selectRandomWord = () => {
-    const randomIndex = Math.floor(Math.random() * words.length);
-    setWord(words[randomIndex]);
+    let availableWords = words.filter((word) => !usedWords.includes(word));
+    if (availableWords.length === 0) {
+      // Todas as palavras foram utilizadas, recomeçar o jogo
+      setUsedWords([]);
+      availableWords = words;
+    }
+
+    const randomIndex = Math.floor(Math.random() * availableWords.length);
+    const selectedWord = availableWords[randomIndex];
+    setWord(selectedWord);
     setGuesses([]);
     setMistakes(0);
     setIsWinner(false);
+    setUsedWords([...usedWords, selectedWord]);
   };
 
   const handleGuess = (letter: string) => {
@@ -333,7 +342,7 @@ const Forca: React.FC = () => {
     }
   }, [isWinner, mistakes, word]);
 
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
   return (
     <div className="forca-container">
@@ -361,39 +370,22 @@ const Forca: React.FC = () => {
         <p>Total de acertos: {totalCorrectGuesses}</p>
       </div>
       <div className="guess-form">
-        <div className="row">
-          {alphabet.slice(0, 10).split("").map((letter) => (
-            <button
-              key={letter}
-              onClick={() => handleGuess(letter)}
-              disabled={guesses.includes(letter)}
-            >
-              {letter}
-            </button>
-          ))}
-        </div>
-        <div className="row">
-          {alphabet.slice(10, 17).split("").map((letter) => (
-            <button
-              key={letter}
-              onClick={() => handleGuess(letter)}
-              disabled={guesses.includes(letter)}
-            >
-              {letter}
-            </button>
-          ))}
-        </div>
-        <div className="row">
-          {alphabet.slice(17).split("").map((letter) => (
-            <button
-              key={letter}
-              onClick={() => handleGuess(letter)}
-              disabled={guesses.includes(letter)}
-            >
-              {letter}
-            </button>
-          ))}
-        </div>
+        {alphabet.map((letter) => (
+          <button
+            key={letter}
+            onClick={() => handleGuess(letter)}
+            disabled={guesses.includes(letter)}
+            className={
+              guesses.includes(letter)
+                ? word.includes(letter)
+                  ? "correct-letter"
+                  : "wrong-letter"
+                : ""
+            }
+          >
+            {letter}
+          </button>
+        ))}
       </div>
       <button className="reset-button" onClick={resetGame}>
         Jogar Novamente
@@ -416,4 +408,3 @@ const Forca: React.FC = () => {
 };
 
 export default Forca;
-*/
